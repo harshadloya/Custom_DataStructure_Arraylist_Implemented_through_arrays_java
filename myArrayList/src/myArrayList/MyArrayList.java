@@ -12,9 +12,9 @@ public class MyArrayList
 
 	public MyArrayList()
 	{
-		arrayList = new int[initialArraySize];
-		for(int x = 0; x < arrayList.length; x++)
-			arrayList[x] = -1;
+		setArrayList(new int[initialArraySize]);
+		for(int x = 0; x < getArrayList().length; x++)
+			getArrayList()[x] = -1;
 	}
 
 	public MyArrayList(String inputFilePath, String outputFilePath)
@@ -27,7 +27,7 @@ public class MyArrayList
 		int i = 0;
 		while((temp = fileProcessor.readLine(inputFilePath)) != null)
 		{
-			if (i == arrayList.length)
+			if (i == getArrayList().length)
 			{
 				resizeArrayList();
 			}
@@ -35,8 +35,8 @@ public class MyArrayList
 			//remove leading or trailing whitespaces if any
 			temp = temp.trim();
 
-			if(-1 == arrayList[i] && temp.matches("\\d+"))
-				arrayList[i] = Integer.parseInt(temp);
+			if(-1 == getArrayList()[i] && temp.matches("\\d+"))
+				getArrayList()[i] = Integer.parseInt(temp);
 			i++;
 		}
 
@@ -44,9 +44,9 @@ public class MyArrayList
 		 * Temporary Code just to check values inside arrayList
 		 */
 		System.out.println("Sorted:");
-		Arrays.sort(arrayList);
-		for(int x = 0; x < arrayList.length; x++)
-			System.out.println(arrayList[x]);
+		Arrays.sort(getArrayList());
+		for(int x = 0; x < getArrayList().length; x++)
+			System.out.println(getArrayList()[x]);
 		
 		//close the open file in the end of reading
 		fileProcessor.closeFile();
@@ -59,18 +59,18 @@ public class MyArrayList
 
 		for(int x = 0; x < tempArrayList.length; x++)
 		{
-			tempArrayList[x] = arrayList[x];
+			tempArrayList[x] = getArrayList()[x];
 		}
 		Arrays.sort(tempArrayList);
 
-		arrayList = new int[arrayList.length + (int)(arrayList.length*0.5)];
+		setArrayList(new int[arrayList.length + (int)(arrayList.length*0.5)]);
 
-		for(int x = 0; x < arrayList.length; x++)
+		for(int x = 0; x < getArrayList().length; x++)
 		{
 			if(x < tempArrayList.length)
-				arrayList[x] = tempArrayList[x];
+				getArrayList()[x] = tempArrayList[x];
 			else
-				arrayList[x] = -1;
+				getArrayList()[x] = -1;
 		}
 	}
 
@@ -92,13 +92,19 @@ public class MyArrayList
 	//returns total number of values stored in arrayList
 	public int size()
 	{
-		return 0;
+		return getArrayList().length;
 	}
 
 	//returns the sum of all values stored in arrayList
 	public int sum()
 	{
-		return 0;
+		int sum = 0;
+		for(int x = 0; x < getArrayList().length; x++)
+		{
+			if(-1 != getArrayList()[x])
+				sum += getArrayList()[x];
+		}
+		return sum;
 	}
 
 	//print all values of the array
