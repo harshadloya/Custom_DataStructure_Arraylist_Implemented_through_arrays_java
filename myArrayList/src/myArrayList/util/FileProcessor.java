@@ -25,7 +25,9 @@ public class FileProcessor
 			e.printStackTrace();
 		}
 	}
+	
 
+	//returns 1 line from the file whose path is specified by filePath on each call to the method
 	public String readLine(String filePath)
 	{
 		String oneLineFromFile = "";
@@ -40,6 +42,21 @@ public class FileProcessor
 		}
 
 		return oneLineFromFile;
+	}
+	
+	
+	//Closes the file opened for reading
+	public void closeFile()
+	{
+		try
+		{
+			br.close();
+		}
+		catch (IOException e) 
+		{
+			System.err.println("File in Use, File cannot be closed");
+			e.printStackTrace();
+		}
 	}
 
 	/*
