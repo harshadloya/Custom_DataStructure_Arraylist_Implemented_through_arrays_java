@@ -2,15 +2,42 @@ package myArrayList;
 
 import java.util.Arrays;
 
+import myArrayList.util.FileProcessor;
+
 public class MyArrayList 
 {
+	int initialArraySize = 9;
+	private int[] arrayList;
+	FileProcessor fileProcessor;
+	
 	public MyArrayList()
 	{
-		
+		arrayList = new int[initialArraySize];
 	}
 	
-	int initialArraySize = 50;
-	private int[] arrayList = new int[initialArraySize];
+	public MyArrayList(String inputFilePath, String outputFilePath)
+	{
+		this();
+		fileProcessor = new FileProcessor(inputFilePath);
+		
+		
+		String temp = "";
+		int i = 0;
+		while((temp = fileProcessor.readLine(inputFilePath)) != null)
+		{			
+			arrayList[i] = Integer.parseInt(temp);
+			i++;
+		}
+		
+		/* 
+		 * Temporary Code just to check values inside arrayList
+		 */
+		System.out.println("Sorted:");
+		Arrays.sort(arrayList);
+		for(int x = 0; x < arrayList.length; x++)
+			System.out.println(arrayList[x]);
+	}
+	
 	
 	public void insertSorted(int newValue)
 	{

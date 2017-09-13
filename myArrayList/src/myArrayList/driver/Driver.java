@@ -1,5 +1,7 @@
 package myArrayList.driver;
 
+import myArrayList.MyArrayList;
+
 public class Driver {
 
 	public static void main(String[] args) 
@@ -7,10 +9,12 @@ public class Driver {
 		String inputFilePath = "";
 		String outputFilePath = "";
 
-		if (args.length == 3)
+		if (args.length == 2)
 		{
-			inputFilePath = args[1];
-			outputFilePath = args[2];
+			inputFilePath = args[0];
+			outputFilePath = args[1];
+			
+			MyArrayList myArrayList = new MyArrayList(inputFilePath, outputFilePath);
 		}
 		else
 		{
