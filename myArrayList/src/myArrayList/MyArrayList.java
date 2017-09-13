@@ -40,13 +40,15 @@ public class MyArrayList
 			i++;
 		}
 
+		Arrays.sort(getArrayList());
+		
 		/* 
 		 * Temporary Code just to check values inside arrayList
-		 */
 		System.out.println("Sorted:");
 		Arrays.sort(getArrayList());
 		for(int x = 0; x < getArrayList().length; x++)
 			System.out.println(getArrayList()[x]);
+		*/
 		
 		//close the open file in the end of reading
 		fileProcessor.closeFile();
@@ -110,7 +112,12 @@ public class MyArrayList
 	//print all values of the array
 	@Override
 	public String toString() {
-		return "MyArrayList [arrayList=" + Arrays.toString(arrayList) + "]";
+		//return "MyArrayList [arrayList=" + Arrays.toString(arrayList) + "]";
+		String temp = "ArrayList:\n---------------------------------------------------------------------------------------------------------------\n";
+		for(int x = 0; x < getArrayList().length; x++)
+			temp += "  " + getArrayList()[x] + "  ";
+		
+		return temp;
 	}
 
 	public int[] getArrayList() {

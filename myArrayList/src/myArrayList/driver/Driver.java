@@ -15,6 +15,7 @@ public class Driver {
 			outputFilePath = args[1];
 			
 			MyArrayList myArrayList = new MyArrayList(inputFilePath, outputFilePath);
+			System.out.println(myArrayList.toString());
 		}
 		else
 		{
