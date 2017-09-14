@@ -74,20 +74,49 @@ public class MyArrayList
 			else
 				getArrayList()[x] = -1;
 		}
+		
+		Arrays.sort(getArrayList());
 	}
 
+	//inserts the value in the arrayList keeping it a sorted list
 	public void insertSorted(int newValue)
 	{
+		if(getArrayList()[0] != -1)
+		{
+			resizeArrayList();
+		}
+		
+		getArrayList()[0] = newValue;
+		Arrays.sort(getArrayList());
 
 	}
 
+	//removes the value from arrayList
 	public void removeValue(int value)
 	{
+		int index = indexOf(value);
+		if(-1 != index)
+		{
+			getArrayList()[index] = -1;
+			Arrays.sort(getArrayList());
+		}
+		else
+		{
+			System.err.println("\nSorry, The value to be removed " + value + " does not exist in the arrayList");
+		}	
 
 	}
 
+	//returns the index of the first occurrence of a value
 	public int indexOf(int value)
 	{
+		
+		int index = 0;
+		for(int x = 0; x < getArrayList().length; x++)
+		{
+			if(value == getArrayList()[x])
+				return x;
+		}
 		return -1;
 	}
 
