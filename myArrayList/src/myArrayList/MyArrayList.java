@@ -31,25 +31,27 @@ public class MyArrayList
 			{
 				resizeArrayList();
 			}
-			
+
 			//remove leading or trailing whitespaces if any
 			temp = temp.trim();
 
 			if(-1 == getArrayList()[i] && temp.matches("\\d+"))
+			{
 				getArrayList()[i] = Integer.parseInt(temp);
-			i++;
+				i++;
+			}
 		}
 
 		Arrays.sort(getArrayList());
-		
+
 		/* 
 		 * Temporary Code just to check values inside arrayList
 		System.out.println("Sorted:");
 		Arrays.sort(getArrayList());
 		for(int x = 0; x < getArrayList().length; x++)
 			System.out.println(getArrayList()[x]);
-		*/
-		
+		 */
+
 		//close the open file in the end of reading
 		fileProcessor.closeFile();
 	}
@@ -74,7 +76,7 @@ public class MyArrayList
 			else
 				getArrayList()[x] = -1;
 		}
-		
+
 		Arrays.sort(getArrayList());
 	}
 
@@ -85,34 +87,59 @@ public class MyArrayList
 		{
 			resizeArrayList();
 		}
-		
+
 		getArrayList()[0] = newValue;
 		Arrays.sort(getArrayList());
 
 	}
 
-	//removes the value from arrayList
+	//removes all occurrences of the passed value from arrayList
 	public void removeValue(int value)
 	{
-		int index = indexOf(value);
-		if(-1 != index)
+		//initializing index to infinity
+		int index = -2;
+		int counter = 0;
+
+		//fetching the number of occurrences for the given value
+		index = indexOf(value);
+		while (index != -1)
 		{
-			getArrayList()[index] = -1;
-			Arrays.sort(getArrayList());
+			counter++;
+			index = indexOf(value, index+1);	
 		}
-		else
+		
+		//Removal Logic for any number of occurrences
+		for (int i = 0; i < counter; i++)
+		{
+			index = indexOf(value);
+			getArrayList()[index] = -1;
+		}
+		
+		Arrays.sort(getArrayList());
+		
+		//value not found
+		if (0 == counter)
 		{
 			System.err.println("\nSorry, The value to be removed " + value + " does not exist in the arrayList");
-		}	
-
+		}
 	}
 
-	//returns the index of the first occurrence of a value
+	
+	//returns the index of the first occurrence of the passed value in the arrayList
 	public int indexOf(int value)
 	{
-		
-		int index = 0;
+
 		for(int x = 0; x < getArrayList().length; x++)
+		{
+			if(value == getArrayList()[x])
+				return x;
+		}
+		return -1;
+	}
+	
+	private int indexOf(int value, int i) 
+	{
+		for(int x = i; x < getArrayList().length; x++)
 		{
 			if(value == getArrayList()[x])
 				return x;
@@ -140,12 +167,18 @@ public class MyArrayList
 
 	//print all values of the array
 	@Override
-	public String toString() {
-		//return "MyArrayList [arrayList=" + Arrays.toString(arrayList) + "]";
+	public String toString() 
+	{
 		String temp = "ArrayList:\n---------------------------------------------------------------------------------------------------------------\n";
 		for(int x = 0; x < getArrayList().length; x++)
-			temp += "  " + getArrayList()[x] + "  ";
-		
+		{
+			if(getArrayList()[x] != -1)
+			{
+				temp += "  " + getArrayList()[x] + "  ";
+			}
+		}
+			
+
 		return temp;
 	}
 
