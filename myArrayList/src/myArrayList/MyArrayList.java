@@ -150,7 +150,15 @@ public class MyArrayList
 	//returns total number of values stored in arrayList
 	public int size()
 	{
-		return getArrayList().length;
+		int count = 0;
+		
+		for(int x = 0; x < getArrayList().length; x++)
+		{
+			if(-1 != getArrayList()[x])
+				count++;
+		}
+		return count;
+		//return getArrayList().length;
 	}
 
 	//returns the sum of all values stored in arrayList
@@ -172,12 +180,11 @@ public class MyArrayList
 		String temp = "ArrayList:\n---------------------------------------------------------------------------------------------------------------\n";
 		for(int x = 0; x < getArrayList().length; x++)
 		{
-			if(getArrayList()[x] != -1)
+			if(-1 != getArrayList()[x])
 			{
 				temp += "  " + getArrayList()[x] + "  ";
 			}
-		}
-			
+		}	
 
 		return temp;
 	}
@@ -189,7 +196,5 @@ public class MyArrayList
 	public void setArrayList(int[] arrayList) {
 		this.arrayList = arrayList;
 	}
-
-
 
 }

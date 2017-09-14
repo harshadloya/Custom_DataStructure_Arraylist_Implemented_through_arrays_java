@@ -17,7 +17,7 @@ public class Driver {
 			MyArrayList myArrayList = new MyArrayList(inputFilePath, outputFilePath);
 			System.out.println(myArrayList.toString());
 			
-			myArrayList.removeValue(1);
+			//myArrayList.removeValue(1);
 			
 			System.out.println();
 			System.out.println(myArrayList.toString());
