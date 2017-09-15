@@ -6,10 +6,13 @@ import myArrayList.util.FileProcessor;
 
 public class MyArrayList 
 {
-	int initialArraySize = 10;
+	private int initialArraySize = 10;
 	private int[] arrayList;
-	FileProcessor fileProcessor;
-	boolean valueCheck = false;
+	private FileProcessor fileProcessor;
+	private boolean valueCheck = false;
+	
+	public boolean insertOp = false;
+	public boolean removeOp = false;
 
 	//arrayList initialized to Integer.MAX_VALUE as infinity condition
 	public MyArrayList()
@@ -109,6 +112,7 @@ public class MyArrayList
 		{
 			getArrayList()[arrayLength-1] = newValue;
 			valueCheck = false;
+			insertOp = true;
 
 			Arrays.sort(getArrayList());
 		}
@@ -138,6 +142,7 @@ public class MyArrayList
 			{
 				index = indexOf(value);
 				getArrayList()[index] = Integer.MAX_VALUE;
+				removeOp = true;
 			}
 
 			Arrays.sort(getArrayList());
@@ -187,7 +192,6 @@ public class MyArrayList
 				count++;
 		}
 		return count;
-		//return getArrayList().length;
 	}
 
 	//returns the sum of all values stored in arrayList

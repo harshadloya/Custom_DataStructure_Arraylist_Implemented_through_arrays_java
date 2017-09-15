@@ -52,12 +52,12 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface
 			}
 			else
 			{
-				System.err.println("The folders given in the path do not exist and cannot be created");
+				System.err.println("\nThe folders given in the path do not exist and cannot be created");
 			}
 		} 
 		catch (IOException e) 
 		{
-			System.err.println("File write cannot be completed");
+			System.err.println("\nFile write cannot be completed");
 			e.printStackTrace();
 		}
 		
@@ -72,6 +72,7 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface
 			if (temp[i]==null)
 			{
 				temp[i] = s;
+				break;
 			}
 		}
 		
