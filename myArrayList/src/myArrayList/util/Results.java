@@ -62,6 +62,21 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface
 		}
 		
 	}
+	
+	public void storeNewResult(String s)
+	{
+		String temp[] = getResultSetStrings();
+		
+		for(int i = 0; i < temp.length; i++)
+		{
+			if (temp[i]==null)
+			{
+				temp[i] = s;
+			}
+		}
+		
+		setResultSetStrings(temp);
+	}
 
 	public String[] getResultSetStrings() {
 		return resultSetStrings;
