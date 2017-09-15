@@ -135,42 +135,73 @@ public class MyArrayListTest
 
 	private boolean test4(MyArrayList myArrayList)
 	{
+		System.out.println("Test IndexOf");
+		testName = "IndexOf function";
+		
+		int check = myArrayList.indexOf(55);
+		if(check != -1)
+		{
+			return true;
+		}
 		return false;
 
 	}
 
 	private boolean test5(MyArrayList myArrayList)
 	{
+		System.out.println("Test Size");
+		testName = "Test Size function";
+		
+		int check = myArrayList.size();
+		if(check != 0)
+		{
+			return true;
+		}		
 		return false;
 
 	}
 
 	private boolean test6(MyArrayList myArrayList)
 	{
+		System.out.println("Test 6");
+		testName = "Test 6";
+		
 		return false;
 
 	}
 
 	private boolean test7(MyArrayList myArrayList)
 	{
+		System.out.println("Test 7");
+		testName = "Test 7";
+		
 		return false;
 
 	}
 
 	private boolean test8(MyArrayList myArrayList)
 	{
+		System.out.println("Test 8");
+		testName = "Test 8";
+		
 		return false;
 
 	}
 
 	private boolean test9(MyArrayList myArrayList)
 	{
+		System.out.println("Test 9");
+		testName = "Test 9";
+		
 		return false;
 
 	}
 
 	private boolean test10(MyArrayList myArrayList)
 	{
+		System.out.println("Test 10");
+		testName = "Test 10";
+		
 		return false;
 
 	}
