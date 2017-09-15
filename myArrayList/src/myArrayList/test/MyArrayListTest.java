@@ -8,7 +8,12 @@ import myArrayList.util.Results;
 
 public class MyArrayListTest 
 {
-	boolean status = false;
+	private boolean status = false;
+	private boolean insertOp[] = new boolean[3];
+	private boolean sortOp = false;
+	private boolean removeOp[] = new boolean[3];
+	
+	private String testName = "";
 
 	public void testMe(MyArrayList myArrayList, Results results)
 	{
@@ -17,6 +22,7 @@ public class MyArrayListTest
 		//Calling the 10 test case methods using the below loop
 		Method test[];
 		Object tempObj;
+		
 		try 
 		{
 			test = MyArrayListTest.class.getDeclaredMethods();
@@ -33,12 +39,13 @@ public class MyArrayListTest
 						if(status)
 						{
 							status = false;
-							results.storeNewResult("\nTest "+ y + " Passed");
+							results.storeNewResult("\nTest "+ testName + " Passed");
 						}
 						else
 						{
-							results.storeNewResult("\nTest "+ y + " Failed");
+							results.storeNewResult("\nTest "+ testName + " Failed");
 						}
+						testName = "";
 					}
 				}
 			}
@@ -60,45 +67,70 @@ public class MyArrayListTest
 
 	private boolean test1(MyArrayList myArrayList)
 	{
-		System.out.println("Test 1");
+		System.out.println("Test Multiple Inserts");
+		testName = "Multiple Inserts";
+		
 		myArrayList.insertSorted(10);
-		myArrayList.insertSorted(372);
 		myArrayList.insertSorted(55);
 		myArrayList.insertSorted(9236);
-		myArrayList.insertSorted(1245);
 		
-		if(myArrayList.insertOp)
+		insertOp[0] = checkInserted(10, myArrayList);
+		insertOp[1] = checkInserted(55, myArrayList);
+		insertOp[2] = checkInserted(9236, myArrayList);
+		
+		if(insertOp[0] && insertOp[1] && insertOp[2])
 		{
-			myArrayList.insertOp = false;
+			insertOp = new boolean[3];
+			sortOp = false;
 			return true;
 		}
 			
 		return false;
-
 	}
 
 	private boolean test2(MyArrayList myArrayList)
 	{
-		System.out.println("Test 2");
+		System.out.println("Test Multiple Removals");
+		testName = "Multiple Removals";
 		
 		myArrayList.removeValue(1);
-		myArrayList.removeValue(372);
-		myArrayList.removeValue(1245);
 		myArrayList.removeValue(10);
+		myArrayList.removeValue(9236);
 		
-		if(myArrayList.removeOp)
+		removeOp[0] = checkRemoved(1, myArrayList);
+		removeOp[1] = checkRemoved(10, myArrayList);
+		removeOp[2] = checkRemoved(9236, myArrayList);
+		
+		if(removeOp[0] && removeOp[1] && removeOp[2])
 		{
-			myArrayList.removeOp = false;
+			removeOp = new boolean[3];
 			return true;
 		}
 		return false;
-
 	}
 
 	private boolean test3(MyArrayList myArrayList)
 	{
+		System.out.println("Test Multiple Sorted Inserts");
+		testName = "Multiple Sorted Inserts";
+		
+		myArrayList.insertSorted(10);
+		myArrayList.insertSorted(55);
+		myArrayList.insertSorted(9236);
+		
+		insertOp[0] = checkInserted(10, myArrayList);
+		insertOp[1] = checkInserted(55, myArrayList);
+		insertOp[2] = checkInserted(9236, myArrayList);
+		sortOp = checkSorted(myArrayList);
+		
+		if(insertOp[0] && insertOp[1] && insertOp[2] && sortOp)
+		{
+			insertOp = new boolean[3];
+			sortOp = false;
+			return true;
+		}
+			
 		return false;
-
 	}
 
 	private boolean test4(MyArrayList myArrayList)
@@ -141,6 +173,42 @@ public class MyArrayListTest
 	{
 		return false;
 
+	}
+	
+	private boolean checkInserted(int value, MyArrayList myArrayList)
+	{
+		for (int x = 0; x < myArrayList.getArrayList().length; x++)
+		{
+			if(value == myArrayList.getArrayList()[x])
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private boolean checkSorted(MyArrayList myArrayList)
+	{
+		for (int x = 0; x < myArrayList.getArrayList().length - 1; x++)
+		{
+			if(myArrayList.getArrayList()[x] > myArrayList.getArrayList()[x+1])
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private boolean checkRemoved(int value, MyArrayList myArrayList)
+	{
+		for (int x = 0; x < myArrayList.getArrayList().length; x++)
+		{
+			if(value == myArrayList.getArrayList()[x])
+			{
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

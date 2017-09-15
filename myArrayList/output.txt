@@ -1,0 +1,13 @@
+
+
+The sum of all values in the arrayList is : 11606
+Test Multiple Inserts Passed
+Test Multiple Removals Passed
+Test Multiple Sorted Inserts Passed
+Test  Failed
+Test  Failed
+Test  Failed
+Test  Failed
+Test  Failed
+Test  Failed
+Test  Failed

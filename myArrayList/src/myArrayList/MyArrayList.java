@@ -11,8 +11,8 @@ public class MyArrayList
 	private FileProcessor fileProcessor;
 	private boolean valueCheck = false;
 	
-	public boolean insertOp = false;
-	public boolean removeOp = false;
+	//public boolean insertOp = false;
+	//public boolean removeOp = false;
 
 	//arrayList initialized to Integer.MAX_VALUE as infinity condition
 	public MyArrayList()
@@ -112,7 +112,7 @@ public class MyArrayList
 		{
 			getArrayList()[arrayLength-1] = newValue;
 			valueCheck = false;
-			insertOp = true;
+			//insertOp = true;
 
 			Arrays.sort(getArrayList());
 		}
@@ -142,7 +142,7 @@ public class MyArrayList
 			{
 				index = indexOf(value);
 				getArrayList()[index] = Integer.MAX_VALUE;
-				removeOp = true;
+				//removeOp = true;
 			}
 
 			Arrays.sort(getArrayList());
