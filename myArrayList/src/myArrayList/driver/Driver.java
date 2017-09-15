@@ -1,6 +1,7 @@
 package myArrayList.driver;
 
 import myArrayList.MyArrayList;
+import myArrayList.test.MyArrayListTest;
 import myArrayList.util.Results;
 
 public class Driver {
@@ -17,22 +18,8 @@ public class Driver {
 			
 			MyArrayList myArrayList = new MyArrayList(inputFilePath, outputFilePath);
 			Results testResults = new Results(outputFilePath);
-			
-			//String[] test = new String[11];
-			//test[0] = myArrayList.toString();
-			
-			//System.out.println(myArrayList.toString());
-			
-			//myArrayList.removeValue(1);
-			
-			//test[1] = "\n";
-			//System.out.println();
-			
-			//test[2] = myArrayList.toString();
-			//System.out.println(myArrayList.toString());
-			
-			//testResults.setResultSetStrings(test);
-			//testResults.writeToFile();
+			MyArrayListTest testcases = new MyArrayListTest();
+			testcases.testMe(myArrayList, testResults);
 		}
 		else
 		{

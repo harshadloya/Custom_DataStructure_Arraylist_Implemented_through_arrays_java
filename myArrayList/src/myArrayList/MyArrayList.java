@@ -9,12 +9,31 @@ public class MyArrayList
 	int initialArraySize = 10;
 	private int[] arrayList;
 	FileProcessor fileProcessor;
+	boolean valueCheck = false;
 
+	//arrayList initialized to Integer.MAX_VALUE as infinity condition
 	public MyArrayList()
 	{
 		setArrayList(new int[initialArraySize]);
 		for(int x = 0; x < getArrayList().length; x++)
-			getArrayList()[x] = -1;
+			getArrayList()[x] = Integer.MAX_VALUE;
+	}
+
+	private boolean checkValue(String value)
+	{
+		if(value.matches("\\d+"))
+		{
+			return true;
+		}
+		else if(!value.matches(""))
+		{
+			System.err.println("Invalid input  "+ value +", only digits allowed");
+		}
+		else if(value.matches(""))
+		{
+			System.err.println("Oops!! Blank Line");
+		}
+		return false;
 	}
 
 	public MyArrayList(String inputFilePath, String outputFilePath)
@@ -35,22 +54,17 @@ public class MyArrayList
 			//remove leading or trailing whitespaces if any
 			temp = temp.trim();
 
-			if(-1 == getArrayList()[i] && temp.matches("\\d+"))
+			valueCheck = checkValue(temp);
+
+			if(valueCheck)
 			{
 				getArrayList()[i] = Integer.parseInt(temp);
 				i++;
+				valueCheck = false;
 			}
 		}
 
 		Arrays.sort(getArrayList());
-
-		/* 
-		 * Temporary Code just to check values inside arrayList
-		System.out.println("Sorted:");
-		Arrays.sort(getArrayList());
-		for(int x = 0; x < getArrayList().length; x++)
-			System.out.println(getArrayList()[x]);
-		 */
 
 		//close the open file in the end of reading
 		fileProcessor.closeFile();
@@ -74,7 +88,7 @@ public class MyArrayList
 			if(x < tempArrayList.length)
 				getArrayList()[x] = tempArrayList[x];
 			else
-				getArrayList()[x] = -1;
+				getArrayList()[x] = Integer.MAX_VALUE;
 		}
 
 		Arrays.sort(getArrayList());
@@ -83,66 +97,81 @@ public class MyArrayList
 	//inserts the value in the arrayList keeping it a sorted list
 	public void insertSorted(int newValue)
 	{
-		if(getArrayList()[0] != -1)
+		int arrayLength = getArrayList().length;
+		if(getArrayList()[arrayLength-1] != Integer.MAX_VALUE)
 		{
 			resizeArrayList();
 		}
 
-		getArrayList()[0] = newValue;
-		Arrays.sort(getArrayList());
+		valueCheck = checkValue(""+newValue);
 
+		if(valueCheck)
+		{
+			getArrayList()[arrayLength-1] = newValue;
+			valueCheck = false;
+
+			Arrays.sort(getArrayList());
+		}
 	}
 
 	//removes all occurrences of the passed value from arrayList
 	public void removeValue(int value)
 	{
-		//initializing index to infinity
-		int index = -2;
-		int counter = 0;
+		valueCheck = checkValue(""+value);
 
-		//fetching the number of occurrences for the given value
-		index = indexOf(value);
-		while (index != -1)
+		if(valueCheck)
 		{
-			counter++;
-			index = indexOf(value, index+1);	
-		}
-		
-		//Removal Logic for any number of occurrences
-		for (int i = 0; i < counter; i++)
-		{
+			//initializing index to infinity
+			int index = -2;
+			int counter = 0;
+
+			//fetching the number of occurrences for the given value
 			index = indexOf(value);
-			getArrayList()[index] = -1;
-		}
-		
-		Arrays.sort(getArrayList());
-		
-		//value not found
-		if (0 == counter)
-		{
-			System.err.println("\nSorry, The value to be removed " + value + " does not exist in the arrayList");
+			while (index != -1)
+			{
+				counter++;
+				index = indexOf(value, index+1);	
+			}
+
+			//Removal Logic for any number of occurrences
+			for (int i = 0; i < counter; i++)
+			{
+				index = indexOf(value);
+				getArrayList()[index] = Integer.MAX_VALUE;
+			}
+
+			Arrays.sort(getArrayList());
+
+			//value not found
+			if (0 == counter)
+			{
+				System.err.println("\nSorry, The value to be removed " + value + " does not exist in the arrayList");
+			}
+
+			valueCheck = false;
 		}
 	}
 
-	
+
 	//returns the index of the first occurrence of the passed value in the arrayList
 	public int indexOf(int value)
 	{
-
-		for(int x = 0; x < getArrayList().length; x++)
-		{
-			if(value == getArrayList()[x])
-				return x;
-		}
-		return -1;
+		int x = indexOf(value, 0);
+		return x;
 	}
-	
+
 	private int indexOf(int value, int i) 
 	{
-		for(int x = i; x < getArrayList().length; x++)
+		valueCheck = checkValue(""+value);
+
+		if(valueCheck)
 		{
-			if(value == getArrayList()[x])
-				return x;
+			valueCheck = false;
+			for(int x = i; x < getArrayList().length; x++)
+			{
+				if(value == getArrayList()[x])
+					return x;
+			}
 		}
 		return -1;
 	}
@@ -151,10 +180,10 @@ public class MyArrayList
 	public int size()
 	{
 		int count = 0;
-		
+
 		for(int x = 0; x < getArrayList().length; x++)
 		{
-			if(-1 != getArrayList()[x])
+			if(Integer.MAX_VALUE != getArrayList()[x])
 				count++;
 		}
 		return count;
@@ -167,7 +196,7 @@ public class MyArrayList
 		int sum = 0;
 		for(int x = 0; x < getArrayList().length; x++)
 		{
-			if(-1 != getArrayList()[x])
+			if(Integer.MAX_VALUE != getArrayList()[x])
 				sum += getArrayList()[x];
 		}
 		return sum;
@@ -180,7 +209,7 @@ public class MyArrayList
 		String temp = "\nArrayList:\n---------------------------------------------------------------------------------------------------------------\n";
 		for(int x = 0; x < getArrayList().length; x++)
 		{
-			if(-1 != getArrayList()[x])
+			if(Integer.MAX_VALUE != getArrayList()[x])
 			{
 				temp += "  " + getArrayList()[x] + "  ";
 			}
