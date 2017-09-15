@@ -177,7 +177,7 @@ public class MyArrayList
 	@Override
 	public String toString() 
 	{
-		String temp = "ArrayList:\n---------------------------------------------------------------------------------------------------------------\n";
+		String temp = "\nArrayList:\n---------------------------------------------------------------------------------------------------------------\n";
 		for(int x = 0; x < getArrayList().length; x++)
 		{
 			if(-1 != getArrayList()[x])
