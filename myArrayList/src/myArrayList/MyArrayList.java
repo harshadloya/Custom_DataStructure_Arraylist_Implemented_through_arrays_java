@@ -100,8 +100,7 @@ public class MyArrayList
 	//inserts the value in the arrayList keeping it a sorted list
 	public void insertSorted(int newValue)
 	{
-		int arrayLength = getArrayList().length;
-		if(getArrayList()[arrayLength-1] != Integer.MAX_VALUE)
+		if(getArrayList()[getArrayList().length-1] != Integer.MAX_VALUE)
 		{
 			resizeArrayList();
 		}
@@ -110,7 +109,7 @@ public class MyArrayList
 
 		if(valueCheck)
 		{
-			getArrayList()[arrayLength-1] = newValue;
+			getArrayList()[getArrayList().length-1] = newValue;
 			valueCheck = false;
 			//insertOp = true;
 
