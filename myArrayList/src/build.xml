@@ -22,7 +22,7 @@
   </target>
 
 
- <target name="jar">
+ <target name="jar" depends="all">
         <mkdir dir="${BUILD}/jar"/>
         <jar destfile="${BUILD}/jar/myArrayList.jar" basedir="${BUILD}/classes">
             <manifest>
@@ -50,9 +50,10 @@
 
 
 <target name="run" depends="jar">
-        <java jar="${BUILD}/jar/myArrayList.jar"  fork="true">
+        <java jar="${BUILD}/jar/myArrayList.jar" fork="true">
 		<arg value="${arg0}"/>
 		<arg value="${arg1}"/>
+		<jvmarg value="-ea"/>
         </java>
 	
     </target>

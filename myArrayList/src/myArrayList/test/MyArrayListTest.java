@@ -69,7 +69,7 @@ public class MyArrayListTest
 
 	private boolean test1(MyArrayList myArrayList)
 	{
-		System.out.println("Test Multiple Inserts");
+		//System.out.println("Test Multiple Inserts");
 		testName = "Multiple Inserts";
 
 		myArrayList.insertSorted(10);
@@ -92,7 +92,7 @@ public class MyArrayListTest
 
 	private boolean test2(MyArrayList myArrayList)
 	{
-		System.out.println("Test Multiple Removals");
+		//System.out.println("Test Multiple Removals");
 		testName = "Multiple Removals";
 
 		myArrayList.removeValue(1);
@@ -114,7 +114,7 @@ public class MyArrayListTest
 	//can change
 	private boolean test3(MyArrayList myArrayList)
 	{
-		System.out.println("Test Multiple Sorted Inserts");
+		//System.out.println("Test Multiple Sorted Inserts");
 		testName = "Multiple Inserts are Sorted";
 
 		myArrayList.insertSorted(10);
@@ -138,7 +138,7 @@ public class MyArrayListTest
 
 	private boolean test4(MyArrayList myArrayList)
 	{
-		System.out.println("Test IndexOf");
+		//System.out.println("Test IndexOf");
 		testName = "IndexOf value which is present in arrayList";
 
 		int check = myArrayList.indexOf(55);
@@ -158,7 +158,7 @@ public class MyArrayListTest
 	private boolean test5(MyArrayList myArrayList)
 	{
 		int checkSize = 0, checkSum = 0, checkIndex = 0;
-		System.out.println("Test All operations");
+		//System.out.println("Test All operations");
 		testName = "All operations in same function";
 
 		myArrayList.insertSorted(100);
@@ -180,7 +180,7 @@ public class MyArrayListTest
 
 	private boolean test6(MyArrayList myArrayList)
 	{
-		System.out.println("IndexOf for a value not present in arrayList");
+		//System.out.println("IndexOf for a value not present in arrayList");
 		testName = "IndexOf for a value not present in arrayList";
 
 		int index = myArrayList.indexOf(3243);
@@ -199,7 +199,7 @@ public class MyArrayListTest
 
 	private boolean test7(MyArrayList myArrayList)
 	{
-		System.out.println("IndexOf for a value, Sum and Size on empty arrayList");
+		//System.out.println("IndexOf for a value, Sum and Size on empty arrayList");
 		testName = "IndexOf for a value, Sum and Size on empty arrayList";
 
 		boolean indexOfCheck = false, sumCheck = false, sizeCheck = false;
@@ -257,7 +257,7 @@ public class MyArrayListTest
 
 	private boolean test8(MyArrayList myArrayList)
 	{
-		System.out.println("Test Size");
+		//System.out.println("Test Size");
 		testName = "Size function test with fixed number of elements";
 
 		myArrayList.insertSorted(0);
@@ -281,7 +281,7 @@ public class MyArrayListTest
 
 	private boolean test9(MyArrayList myArrayList)
 	{
-		System.out.println("Sum of Elements check");
+		//System.out.println("Sum of Elements check");
 		testName = "Sum of Elements check";
 
 		int checkSum = myArrayList.sum();
@@ -301,7 +301,7 @@ public class MyArrayListTest
 
 	private boolean test10(MyArrayList myArrayList)
 	{
-		System.out.println("Array Resizing Check");
+		//System.out.println("Array Resizing Check");
 		testName = "Array Resizing Check";
 
 		String inPath = "./src/input.txt";

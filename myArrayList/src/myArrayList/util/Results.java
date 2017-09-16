@@ -34,7 +34,7 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface
 		try 
 		{
 			String path = getOutputFilePath();
-			String[] temp = path.split("output.tx");
+			String[] temp = path.split("output_file.tx");
 			
 			File file = new File(temp[0]);
 			boolean check = file.mkdirs();

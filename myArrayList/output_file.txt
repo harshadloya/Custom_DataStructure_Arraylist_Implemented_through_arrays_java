@@ -1,0 +1,14 @@
+
+
+The sum of all values in the arrayList is : 11606
+
+Test Multiple Inserts										Passed
+Test Multiple Removals										Passed
+Test Multiple Inserts are Sorted										Passed
+Test IndexOf value which is present in arrayList										Passed
+Test All operations in same function										Passed
+Test IndexOf for a value not present in arrayList										Passed
+Test IndexOf for a value, Sum and Size on empty arrayList										Passed
+Test Size function test with fixed number of elements										Passed
+Test Sum of Elements check										Passed
+Test Array Resizing Check										Passed
